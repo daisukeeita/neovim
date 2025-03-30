@@ -63,5 +63,12 @@ return {
         }
       })
     end
-  }
+  },
+
+  { 
+    'echasnovski/mini.pairs',
+    config = function()
+      require('mini.pairs').setup()
+    end
+  },
 }

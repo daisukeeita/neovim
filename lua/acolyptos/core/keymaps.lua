@@ -7,6 +7,7 @@ local opts = { noremap = true }
 global.mapleader = " "
 
 keymap.set("n", "k", "k", opts_silent) -- Disable treesitter-textobjects overriding this button
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear highlight search" })
 
 -- Quick save and exit
 keymap.set("n", "<leader>w", ":w<CR>", opts_silent)

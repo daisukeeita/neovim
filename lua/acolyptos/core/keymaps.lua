@@ -65,3 +65,14 @@ keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find Files"
 keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live Grep" })
 keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Find Buffers" })
 keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help Tags" })
+
+-----------------------------------------------------------------
+---                       GITSIGNS                            ---
+-----------------------------------------------------------------
+keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>")
+keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>")
+keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<CR>")
+keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>")
+keymap.set("n", "<leader>gd", ":Gitsigns diffthis<CR>")
+keymap.set("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+keymap.set("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })

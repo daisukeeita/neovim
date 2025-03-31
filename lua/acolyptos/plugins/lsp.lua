@@ -18,6 +18,62 @@ return {
             local lvl = ({ "ERROR", "WARN", "INFO", "DEBUG" })[result.type]
             vim.notify(result.message, lvl, { title = client.name })
           end
+        },
+
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+          end
+        end,
+
+        settings = {
+          java = {
+            format = {
+              enabled = true,
+              settings = {
+                url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+                profile = "GoogleStyle",
+              }
+            },
+            errors = {
+              incompleteClasspath = {
+                severity = "warning",
+              }
+            },
+            configuration = {
+              checkstyle = {
+                enabled = true
+              }
+            },
+            trace = {
+              server = "verbose"
+            },
+            signatureHelp = {
+              enabled = true,
+            },
+            completion = {
+              favoriteStaticMembers = {
+                "org.junit.Assert.*",
+                "org.junit.Assume.*",
+                "org.junit.jupiter.api.Assertions.*",
+                "org.junit.jupiter.api.Assumptions.*",
+                "org.junit.jupiter.api.DynamicContainer.*",
+                "org.junit.jupiter.api.DynamicTest.*"
+              },
+              filteredTypes = {
+                "com.sun.*",
+                "io.micrometer.shaded.*",
+                "java.awt.*",
+                "jdk.*", "sun.*",
+              }
+            },
+            sources = {
+              organizeImports = {
+                starThreshold = 9999,
+                staticStarThreshold = 9999
+              }
+            },
+          }
         }
       })
 

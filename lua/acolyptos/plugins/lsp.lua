@@ -12,6 +12,7 @@ return {
         cmd = { 'jdtls' },
         root_dir = lspconfig.util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
         capabilities = capabilities, -- Enable full LSP support
+
         handlers = {
           ["window/showMessages"] = function(_, result, ctx)
             local client = vim.lsp.get_client_by_id(ctx.client_id)

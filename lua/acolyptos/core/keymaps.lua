@@ -76,3 +76,32 @@ keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>")
 keymap.set("n", "<leader>gd", ":Gitsigns diffthis<CR>")
 keymap.set("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
 keymap.set("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+
+-----------------------------------------------------------------
+---                       TERMINAL                            ---
+-----------------------------------------------------------------
+local terminal_bufnr = nil  -- Store terminal buffer number
+local terminal_winid = nil   -- Store terminal window ID
+
+-- This will hide the terminal instead of destroying the terminal
+function ToggleBottomTerminal()
+  if terminal_winid and vim.api.nvim_win_is_valid(terminal_winid) then
+    vim.api.nvim_win_hide(terminal_winid)  -- Hide the window instead of closing
+    terminal_winid = nil
+  else
+    if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
+      -- Open the existing terminal buffer
+      vim.cmd("botright split") 
+      vim.cmd("resize 10")
+      vim.api.nvim_set_current_buf(terminal_bufnr)
+    else
+      -- Create a new terminal if it doesn't exist
+      vim.cmd("botright split | resize 10 | terminal")
+      terminal_bufnr = vim.api.nvim_get_current_buf()
+    end
+    terminal_winid = vim.api.nvim_get_current_win()
+  end
+end
+
+vim.keymap.set("n", "<leader>tb", ToggleBottomTerminal, { noremap = true, silent = true })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts_silent)

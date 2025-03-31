@@ -36,6 +36,20 @@ return {
         },
       }
 
+      local function lsp_attached()
+        local clients = vim.lsp.get_active_clients()
+        local buf_ft = vim.bo.filetype
+        local lsp_names = {}
+
+        for _, client in pairs(clients) do
+          if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+            table.insert(lsp_names, client.name)
+          end
+        end
+
+        return #lsp_names > 0 and "  " .. table.concat(lsp_names, ", ") or "No LSP"
+        end
+
       lualine.setup({
         options = {
           theme = nord_theme,
@@ -45,7 +59,7 @@ return {
         sections = {
           lualine_a = { { 'mode', icon = '' } },
           lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = { { 'filename', path = 1, icon = '' } },
+          lualine_c = { lsp_attached },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
           lualine_z = { { 'location', icon = '' } },

@@ -14,6 +14,7 @@ This repository contains my customized Neovim configuration, focused on a modern
 - **Git Integration**: Visual Git Signs via `gitsigigns.nvim` and CLI via `lazygit`
 - **Java Development**: LSP with `jdtls`, integration with `google-java-format`
 
+
 ## Key Features & Customizations
 
 ### LSP Configuration
@@ -49,7 +50,6 @@ Neovim 0.11 changes `vim.lsp.util.jump_to_location`, update to the new API.
 
 ## Future Improvements
 - Custom Treesitter peek definitions without LSP fallback.
-- More statusline customization.
 
 ## License
 This configuration is open-source and free to use!

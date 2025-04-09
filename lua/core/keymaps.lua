@@ -49,15 +49,6 @@ keymap.set("n", "<S-l>", ":bnext<CR>", opts) -- Go to next buffer
 keymap.set("n", "<leader>bd", ":bp|bd #<CR>", opts) -- Delete a buffer 
 
 -----------------------------------------------------------------
----                         TABS                              ---
------------------------------------------------------------------
-
-keymap.set("n", "<leader>tn", ":tabnew<CR>", opts) -- Create a new tab
-keymap.set("n", "<leader>tc", ":tabclose<CR>", opts) -- Close a tab
-keymap.set("n", "<A-,>", ":tabprevious<CR>", opts) -- Go to previous tab
-keymap.set("n", "<A-.>", ":tabnext<CR>", opts) -- Go to next tab
-
------------------------------------------------------------------
 ---                      TELESCOPE                            ---
 -----------------------------------------------------------------
 
@@ -76,6 +67,77 @@ keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>")
 keymap.set("n", "<leader>gd", ":Gitsigns diffthis<CR>")
 keymap.set("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
 keymap.set("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+
+-----------------------------------------------------------------
+---                        NEOTEST                            ---
+-----------------------------------------------------------------
+local neotest = require("neotest")
+
+keymap.set("n", "<leader>tt", function ()
+  neotest.run.run()
+end, { desc = "Run nearest test" })
+
+keymap.set("n", "<leader>td", function ()
+  neotest.run.run({ strategy = "dap" })
+end, { desc = "Debug nearest test with DAP" })
+
+keymap.set("n", "<leader>tf", function ()
+  neotest.run.file()
+end, { desc = "Run file test"})
+
+keymap.set("n", "<leader>to", function ()
+  neotest.output.open({ enter = true })
+end, { desc = "Show test output" })
+
+keymap.set("n", "<leader>ts", function ()
+  neotest.summary.toggle()
+end, { desc = "Toggle test summary" })
+
+keymap.set("n", "<leader>tD", function ()
+  neotest.run.stop()
+end, { desc = "Stop running tests" })
+
+-----------------------------------------------------------------
+---                         DAP                               ---
+-----------------------------------------------------------------
+local dap = require("dap")
+local dapui = require("dapui")
+
+keymap.set("n", "<leader>dui", function ()
+  dapui.toggle()
+end, { noremap = true, silent = true, desc = "DAPUI: Toggle DAP UI" })
+
+keymap.set("n", "<F5>", function ()
+  dap.continue()
+end, { desc = "DAP: Continue/Start Debugger"})
+
+keymap.set("n", "<F6>", function ()
+  dap.step_over()
+end, { desc = "DAP: Step Over" })
+
+keymap.set("n", "<F7>", function ()
+  dap.step_into()
+end, { desc = "DAP: Step Into" })
+
+keymap.set("n", "<F8>", function ()
+  dap.step_out()
+end, { desc = "DAP: Step Out" })
+
+keymap.set("n", "<F9>", function ()
+  dap.run_last()
+end, { desc = "DAP: Run Last"})
+
+keymap.set("n", "<F12>", function ()
+  dap.terminate()
+end, { desc = "DAP: Terminate"})
+
+keymap.set("n", "<leader>dtb", function ()
+  dap.toggle_breakpoint()
+end, { noremap = true, silent = true, desc = "DAP: Toggle Breakpoint" })
+
+keymap.set("n", "<leader>dtr", function ()
+  dap.repl.toggle()
+end, { noremap = true, silent = true, desc = "DAP: Toggle DAP REPL" })
 
 -----------------------------------------------------------------
 ---                       TERMINAL                            ---

@@ -10,6 +10,9 @@ This repository contains my customized Neovim configuration, focused on a modern
 - **Lualine**: A beautiful and functional status line.
 - **fzf, fd, ripgrep**: Enhancing file searching and navigation.
 - **nvim-notify**: Redirecting notifications away from the command line for a better experience.
+- **Terminal Integration**: Tooggleable terminal at bottom split
+- **Git Integration**: Visual Git Signs via `gitsigigns.nvim` and CLI via `lazygit`
+- **Java Development**: LSP with `jdtls`, integration with `google-java-format`
 
 ## Key Features & Customizations
 
@@ -42,7 +45,7 @@ vim.keymap.set('n', 'k', 'k', { noremap = true, silent = true })
 ```
 
 ### LSP Showing Deprecated Warnings
-Neovim 0.12 changes `vim.lsp.util.jump_to_location`, update to the new API.
+Neovim 0.11 changes `vim.lsp.util.jump_to_location`, update to the new API.
 
 ## Future Improvements
 - Custom Treesitter peek definitions without LSP fallback.

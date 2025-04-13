@@ -14,7 +14,6 @@ lazy.setup({
   },
   {
     "mfussenegger/nvim-jdtls",
-    ft = "java",
     dependencies = {
       "mfussenegger/nvim-dap"
     }
@@ -26,6 +25,7 @@ lazy.setup({
     lazy = false,
     build = ":TSUpdate"
   },
+  { "fei6409/log-highlight.nvim" },
 
   -- Completion related plugins
   {

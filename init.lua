@@ -31,7 +31,7 @@ require("core.keymaps")
 require("core.options")
 
 -- Load LSP configurations
-require("lsp")
+require("lsp.init")
 
 -- Load plugin configurations
 require("plugins.colorscheme")

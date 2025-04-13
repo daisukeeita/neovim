@@ -53,6 +53,14 @@ opt.laststatus = 3
 opt.cmdheight = 1
 -- Status Line
 
+-- Tabs
+opt.showtabline = 0
+
+-- Text width
+opt.colorcolumn = '80'
+opt.linebreak = true
+opt.textwidth = 80
+
 -- Title String
 opt.title = true
 -- Title String

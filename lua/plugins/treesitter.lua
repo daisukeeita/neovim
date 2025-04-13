@@ -1,5 +1,6 @@
-local treesitter_config = require("nvim-treesitter.configs")
+require("log-highlight").setup({})
 
+local treesitter_config = require("nvim-treesitter.configs")
 treesitter_config.setup({
   ensure_installed = { "java" },  -- Install Java parser
   highlight = { enable = true }, -- Enable syntax highlighting

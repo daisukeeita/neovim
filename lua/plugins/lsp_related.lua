@@ -37,3 +37,5 @@ vim.lsp.handlers["window/showMessage"] = function (_, result, ctx)
     title = "LSP | " .. client.name,
   })
 end
+
+vim.lsp.set_log_level("off") -- For debugging, switch it to "debug"

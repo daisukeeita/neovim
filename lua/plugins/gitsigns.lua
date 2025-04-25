@@ -2,12 +2,12 @@ local gitsigns = require("gitsigns")
 
 gitsigns.setup({
   signs = {
-    add          = { text = "┃" }, -- Nord green
-    change       = { text = "┃" }, -- Nord blue
-    delete       = { text = "󰍵" }, -- Nord red
-    topdelete    = { text = "󰍵" }, -- Nord red
-    changedelete = { text = "┃" }, -- Nord yellow
-    untracked    = { text = "┆" }, -- Nord gray
+    add          = { text = "┃" },
+    change       = { text = "┃" },
+    delete       = { text = "󰍵" },
+    topdelete    = { text = "󰍵" },
+    changedelete = { text = "┃" },
+    untracked    = { text = "┆" },
   },
   sign_priority = 6,
   numhl = true, -- Highlights line numbers

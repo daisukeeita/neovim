@@ -132,6 +132,7 @@ lazy.setup({
 
   -- Colorscheme
   { "shaunsingh/nord.nvim" },
+  { "catppuccin/nvim", name = "catppuccin"},
 
   checker = { enabled = true },
   ui = {

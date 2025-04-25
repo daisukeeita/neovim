@@ -1,4 +1,9 @@
-require("bufferline").setup({})
+local latte = require("catppuccin.palettes").get_palette "latte"
+require("bufferline").setup({
+  highlights = require("catppuccin.groups.integrations.bufferline").get{
+    styles = { "italic", "bold" },
+  }
+})
 require("nvim-tree").setup({})
 
 -- Notify
@@ -13,37 +18,6 @@ vim.notify = notify
 
 -- Status Line
 local lualine = require('lualine')
-local colors = {
-  bg       = '#2E3440', -- Dark background
-  fg       = '#D8DEE9', -- Light foreground
-  yellow   = '#EBCB8B',
-  cyan     = '#88C0D0',
-  darkblue = '#5E81AC',
-  green    = '#A3BE8C',
-  orange   = '#D08770',
-  violet   = '#B48EAD',
-  magenta  = '#BF616A',
-  blue     = '#81A1C1',
-  red      = '#BF616A',
-}
-
-local nord_theme = {
-  normal = {
-    a = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
-    b = { fg = colors.fg, bg = colors.darkblue },
-    c = { fg = colors.fg, bg = colors.bg },
-  },
-  insert = { a = { fg = colors.bg, bg = colors.green, gui = 'bold' } },
-  visual = { a = { fg = colors.bg, bg = colors.violet, gui = 'bold' } },
-  replace = { a = { fg = colors.bg, bg = colors.red, gui = 'bold' } },
-  command = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
-  inactive = {
-    a = { fg = colors.fg, bg = colors.bg, gui = 'bold' },
-    b = { fg = colors.fg, bg = colors.bg },
-    c = { fg = colors.fg, bg = colors.bg },
-  },
-}
-
 local function lsp_attached()
   local clients = vim.lsp.get_clients()
   local buf_ft = vim.bo.filetype
@@ -60,7 +34,7 @@ local function lsp_attached()
 
 lualine.setup({
   options = {
-    theme = nord_theme,
+    theme = "catppuccin",
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
   },
@@ -97,12 +71,12 @@ dashboard.section.footer.val = {
   "Welcome back, Acolyptos."
 }
 
-vim.cmd([[highlight AlphaHeader guifg=#88C0D0]])
-vim.cmd([[highlight AlphaButtons guifg=#8FBCBB]])
-vim.cmd([[highlight AlphaFooter guifg=#81A1C1]])
-
-dashboard.section.header.opts.hl = "AlphaHeader"
-dashboard.section.buttons.opts.hl = "AlphaButtons"
-dashboard.section.footer.opts.hl = "AlphaFooter"
+-- vim.cmd([[highlight AlphaHeader guifg=#88C0D0]])
+-- vim.cmd([[highlight AlphaButtons guifg=#8FBCBB]])
+-- vim.cmd([[highlight AlphaFooter guifg=#81A1C1]])
+--
+-- dashboard.section.header.opts.hl = "AlphaHeader"
+-- dashboard.section.buttons.opts.hl = "AlphaButtons"
+-- dashboard.section.footer.opts.hl = "AlphaFooter"
 
 alpha.setup(dashboard.opts)

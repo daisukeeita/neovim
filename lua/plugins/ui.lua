@@ -1,10 +1,16 @@
+-- BufferLine
 local latte = require("catppuccin.palettes").get_palette "latte"
 require("bufferline").setup({
   highlights = require("catppuccin.groups.integrations.bufferline").get{
     styles = { "italic", "bold" },
   }
 })
+
+-- Nvim Tree
 require("nvim-tree").setup({})
+
+-- Indent Scope
+require('mini.indentscope').setup({})
 
 -- Notify
 local notify = require("notify")

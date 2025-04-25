@@ -17,7 +17,6 @@ opt.updatetime = 250
 -- GUI Colors
 opt.termguicolors = true
 vim.cmd("syntax on")
-vim.g.nord_disable_background = true
 -- GUI Colors
 
 -- Indenting 

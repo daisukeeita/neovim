@@ -25,6 +25,7 @@ lazy.setup({
     lazy = false,
     build = ":TSUpdate"
   },
+  { "nvim-treesitter/nvim-treesitter-context" },
   { "fei6409/log-highlight.nvim" },
 
   -- Completion related plugins

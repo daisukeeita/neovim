@@ -57,7 +57,7 @@ opt.cmdheight = 1
 opt.showtabline = 0
 
 -- Text width
-opt.colorcolumn = '80'
+-- opt.colorcolumn = '80'
 opt.linebreak = true
 opt.textwidth = 80
 

@@ -38,7 +38,7 @@ keymap.set("n", "<C-down>", "<cmd>resize -4<CR>", opts) -- Decreasing the height
 ---                     FILE EXPLORATION                      ---
 -----------------------------------------------------------------
 
-keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", opts)
 
 -----------------------------------------------------------------
 ---                         BUFFER                            ---

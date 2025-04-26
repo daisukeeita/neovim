@@ -23,18 +23,27 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("CursorMoved", {
-  callback = function ()
-    local line = vim.api.nvim_get_current_line()
-    local warning_zone = 75
-    local red_zone = 80
-
-    if #line >= warning_zone and #line < red_zone then
-      vim.cmd([[highlight ColorColumn guibg=#4c566a]])
-    elseif #line >= red_zone then
-      vim.cmd([[highlight ColorColumn guibg=#bf616a]])
-    else
-      vim.cmd([[highlight ColorColumn guibg=#3b4252]])
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  callback = function()
+    local ignore_filetypes = {
+      "aerial",
+      "alpha",
+      "dashboard",
+      "help",
+      "lazy",
+      "leetcode.nvim",
+      "mason",
+      "neo-tree",
+      "NvimTree",
+      "neogitstatus",
+      "notify",
+      "startify",
+      "toggleterm",
+      "Trouble",
+      "markdown",
+    }
+    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+      vim.b.miniindentscope_disable = true
     end
-  end
+  end,
 })
